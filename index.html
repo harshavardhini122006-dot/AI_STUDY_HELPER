@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Helper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="top-header">
+        <div class="header-brand">
+            <h1>🎓 AI Study Helper</h1>
+            <p>Learn Smarter, Not Harder.</p>
+        </div>
+
+        <div class="header-profile">
+            <span class="profile-icon">👩‍🎓</span>
+            <span>Student</span>
+        </div>
+    </header>
+
+    <!-- DASHBOARD LAYOUT -->
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h3>MENU</h3>
+
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-link active">🏠 Dashboard</a>
+                <a href="#smart-notes" class="nav-link">📚 Smart Notes</a>
+                <a href="#doubt-solver" class="nav-link">💬 AI Doubt Solver</a>
+                <a href="#quiz-generator" class="nav-link">📝 Quiz Generator</a>
+                <a href="#learning-gaps" class="nav-link">📊 Learning Gaps</a>
+                <a href="#learning-roadmap" class="nav-link">🎯 Learning Roadmap</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>✨ Keep Learning!</p>
+                <small>Your success starts today.</small>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" id="dashboard">
+
+            <!-- WELCOME SECTION -->
+            <section class="welcome-section">
+                <div>
+                    <p class="welcome-label">YOUR LEARNING SPACE</p>
+                    <h2>Welcome, Student! 👋</h2>
+                    <p>
+                        Your personal AI-powered learning companion.
+                        Learn smarter, track your progress, and achieve your goals.
+                    </p>
+                </div>
+            </section>
+
+            <!-- DASHBOARD STATISTICS -->
+            <section class="dashboard-overview">
+
+                <div class="section-heading">
+                    <h2>📊 Your Learning Overview</h2>
+                    <p>Track your learning progress and performance.</p>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <h3>Total Quizzes</h3>
+                        <p class="stat-number" id="totalQuizzes">0</p>
+                        <small>Quizzes attempted</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <h3>Average Accuracy</h3>
+                        <p class="stat-number" id="averageAccuracy">0%</p>
+                        <small>Overall performance</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <h3>Strong Topics</h3>
+                        <p class="stat-number" id="strongTopics">0</p>
+                        <small>Topics mastered</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📚</div>
+                        <h3>Topics to Improve</h3>
+                        <p class="stat-number" id="topicsToImprove">0</p>
+                        <small>Topics needing revision</small>
+                    </div>
+
+                </div>
+
+                <p id="dashboardStatus">Your dashboard is ready.</p>
+            </section>
+
+            <!-- FIVE MAIN FEATURES: ONE GRID ONLY -->
+            <section class="features">
+
+                <!-- FEATURE 1: SMART NOTES -->
+                <div class="card" id="smart-notes">
+
+                    <div class="feature-header">
+                        <div class="feature-icon purple">📚</div>
+                        <span class="feature-label">DOCUMENT LEARNING</span>
+                    </div>
+
+                    <h3>Smart Notes</h3>
+                    <p>
+                        Upload your study materials and explore important
+                        information from your notes.
+                    </p>
+
+                    <label for="pdfFile" class="input-label">Choose your PDF notes</label>
+                    <input type="file" id="pdfFile" accept=".pdf">
+
+                    <button class="feature-button" onclick="uploadPDF()">
+                        Upload PDF <span>→</span>
+                    </button>
+
+                    <p id="uploadStatus" class="feature-output"></p>
+                </div>
+
+                <!-- FEATURE 2: DOUBT SOLVER -->
+                <div class="card" id="doubt-solver">
+
+                    <div class="feature-header">
+                        <div class="feature-icon blue">💬</div>
+                        <span class="feature-label">INSTANT ASSISTANCE</span>
+                    </div>
+
+                    <h3>AI Doubt Solver</h3>
+                    <p>
+                        Ask questions about your uploaded notes and
+                        get relevant answers.
+                    </p>
+
+                    <label for="questionInput" class="input-label">Your question</label>
+                    <textarea
+                        id="questionInput"
+                        placeholder="Type your question here..."
+                        rows="4"
+                    ></textarea>
+
+                    <button class="feature-button" onclick="askQuestion()">
+                        Ask Question <span>→</span>
+                    </button>
+
+                    <div id="answerOutput" class="feature-output"></div>
+                </div>
+
+                <!-- FEATURE 3: QUIZ GENERATOR -->
+                <div class="card" id="quiz-generator">
+
+                    <div class="feature-header">
+                        <div class="feature-icon orange">📝</div>
+                        <span class="feature-label">PRACTICE & TEST</span>
+                    </div>
+
+                    <h3>Quiz Generator</h3>
+                    <p>
+                        Test your understanding with quizzes created
+                        from your uploaded study notes.
+                    </p>
+
+                    <label for="numQuestions" class="input-label">
+                        Select number of questions
+                    </label>
+
+                    <select id="numQuestions">
+                        <option value="5">5 Questions</option>
+                        <option value="10">10 Questions</option>
+                    </select>
+
+                    <button class="feature-button" onclick="generateQuiz()">
+                        Generate Quiz <span>→</span>
+                    </button>
+
+                    <div id="quizOutput" class="feature-output"></div>
+                    <div id="quizResult" class="feature-output"></div>
+                </div>
+
+                <!-- FEATURE 4: LEARNING GAPS -->
+                <div class="card" id="learning-gaps">
+
+                    <div class="feature-header">
+                        <div class="feature-icon green">📊</div>
+                        <span class="feature-label">PERFORMANCE INSIGHTS</span>
+                    </div>
+
+                    <h3>Learning Gaps</h3>
+                    <p>
+                        Identify your weak topics, understand your
+                        performance and discover areas to improve.
+                    </p>
+
+                    <button class="feature-button" onclick="getLearningGaps()">
+                        Analyse My Performance <span>→</span>
+                    </button>
+
+                    <div id="learningGapOutput" class="feature-output"></div>
+                </div>
+
+                <!-- FEATURE 5: LEARNING ROADMAP -->
+                <div class="card" id="learning-roadmap">
+
+                    <div class="feature-header">
+                        <div class="feature-icon pink">🎯</div>
+                        <span class="feature-label">PERSONALISED LEARNING</span>
+                    </div>
+
+                    <h3>Learning Roadmap</h3>
+                    <p>
+                        Get personalised study recommendations
+                        based on your quiz performance.
+                    </p>
+
+                    <button class="feature-button" onclick="getLearningRoadmap()">
+                        Generate My Roadmap <span>→</span>
+                    </button>
+
+                    <div id="roadmapOutput" class="feature-output"></div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
